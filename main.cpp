@@ -1,10 +1,10 @@
 #include <QApplication>
-#include <QWindow>
 #include <QGridLayout>
 #include "RecursiveFractalWidget.h"
 #include "KochSnowflakeWidget.h"
 #include "SierpinskiTriangleWidget.h"
 #include "DragonCurveWidget.h"
+#include "MandelbrotWidget.h"
 
 int main(int argc, char *argv[])
 {
@@ -21,8 +21,12 @@ int main(int argc, char *argv[])
     gridLayout.addWidget(&kochSnowflakeWidget, 0, 1);
     gridLayout.addWidget(&sierpinskiTriangleWidget, 1, 0);
     gridLayout.addWidget(&dragonCurveWidget, 1, 1);
+
+    MandelbrotWidget mandelbrotWidget;
+
     w.setLayout(&gridLayout);
     w.setWindowState(Qt::WindowMaximized);
-    w.show();
+    mandelbrotWidget.setWindowState(Qt::WindowMaximized);
+    mandelbrotWidget.show();
     return app.exec();
 }
