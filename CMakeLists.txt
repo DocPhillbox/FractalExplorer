@@ -12,7 +12,6 @@ find_package(Qt6 COMPONENTS
         Core
         Gui
         Widgets
-        Quick
         REQUIRED)
 
 add_executable(FractalExplorer main.cpp RecursiveFractalWidget.h RecursiveFractalWidget.cpp KochSnowflakeWidget.h KochSnowflakeWidget.cpp SierpinskiTriangleWidget.h SierpinskiTriangleWidget.cpp DragonCurveWidget.h DragonCurveWidget.cpp)
@@ -20,7 +19,6 @@ target_link_libraries(FractalExplorer
         Qt::Core
         Qt::Gui
         Qt::Widgets
-        Qt::Quick
         )
 
 if (WIN32)
