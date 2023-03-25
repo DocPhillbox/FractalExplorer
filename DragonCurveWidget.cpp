@@ -16,6 +16,7 @@ void DragonCurveWidget::paintEvent(QPaintEvent *event)
     painter.fillRect(rect(), Qt::black);
     painter.setPen(Qt::white);
     painter.translate(width / 1.5, height / 1.75);
+    painter.scale(0.6, 0.6);
     leftDragon(&painter, 6, depth);
 }
 

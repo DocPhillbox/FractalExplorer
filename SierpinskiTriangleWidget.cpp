@@ -15,7 +15,7 @@ void SierpinskiTriangleWidget::paintEvent(QPaintEvent *event)
     int depth = 6;
     painter.fillRect(rect(), Qt::black);
     painter.setPen(Qt::white);
-    painter.translate(width / 4.0, 3.0 * height / 4.0);
+    painter.translate(width / 3.0, 3.0 * height / 4.0);
     sierpinski(&painter, 4 * height / 6.0, depth);
 }
 

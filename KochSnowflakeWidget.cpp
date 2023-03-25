@@ -15,7 +15,7 @@ void KochSnowflakeWidget::paintEvent(QPaintEvent *event)
     int depth = 7;
     painter.fillRect(rect(), Qt::black);
     painter.setPen(Qt::white);
-    painter.translate(width / 4.0, height / 3.0);
+    painter.translate(width / 3.0, height / 3.0);
     snowFlake(&painter, 4 * height / 6.0, depth);
 }
 
