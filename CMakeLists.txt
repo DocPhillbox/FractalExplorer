@@ -15,7 +15,7 @@ find_package(Qt6 COMPONENTS
         Quick
         REQUIRED)
 
-add_executable(FractalExplorer main.cpp RenderThread.h RenderThread.cpp MandelbrotWidget.h MandelbrotWidget.cpp RecursiveFractalWidget.h RecursiveFractalWidget.cpp KochSnowflakeWidget.h KochSnowflakeWidget.cpp SierpinskiTriangleWidget.h SierpinskiTriangleWidget.cpp DragonCurveWidget.h DragonCurveWidget.cpp)
+add_executable(FractalExplorer main.cpp RecursiveFractalWidget.h RecursiveFractalWidget.cpp KochSnowflakeWidget.h KochSnowflakeWidget.cpp SierpinskiTriangleWidget.h SierpinskiTriangleWidget.cpp DragonCurveWidget.h DragonCurveWidget.cpp)
 target_link_libraries(FractalExplorer
         Qt::Core
         Qt::Gui
