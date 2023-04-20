@@ -28,5 +28,6 @@ int main(int argc, char *argv[])
     w.setWindowState(Qt::WindowMaximized);
     mandelbrotWidget.setWindowState(Qt::WindowMaximized);
     mandelbrotWidget.show();
+    w.show();
     return app.exec();
 }

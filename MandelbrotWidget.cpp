@@ -17,29 +17,28 @@ MandelbrotWorker::MandelbrotWorker(QObject *parent)
 
 void MandelbrotWorker::render(double centerX, double centerY, double scaleFactor, int width, int height, double devicePixelRatio)
 {
-    this->centerX = centerX;
-    this->centerY = centerY;
-    this->scaleFactor = scaleFactor;
-    this->width = width;
-    this->height = height;
-    this->devicePixelRatio = devicePixelRatio;
-
-
-    draw();
+    if (
+            this->centerX != centerX || this->centerY != centerY ||
+            this->scaleFactor != scaleFactor || this->width != width ||
+            this->height != height || this->devicePixelRatio != devicePixelRatio
+            ) {
+        this->centerX = centerX;
+        this->centerY = centerY;
+        this->scaleFactor = scaleFactor;
+        this->width = width;
+        this->height = height;
+        this->devicePixelRatio = devicePixelRatio;
+        draw();
+    }
 }
 
 void MandelbrotWorker::draw()
 {
-    printf("run");
     QImage image(QSize(width, height), QImage::Format_RGB32);
     int halfWidth = this->width / 2;
     int halfHeight = this->height / 2;
     image.setDevicePixelRatio(devicePixelRatio);
     int iterations = 26;
-    double minR = -3;
-    double maxR = 2.5;
-    double minI = -1.5;
-    double maxI = 1.5;
 
     for (int y = 0; y < height; ++y)
     {
@@ -47,8 +46,6 @@ void MandelbrotWorker::draw()
 
         for (int x = 0; x < width; ++x)
         {
-            // double cr = mapToReal(x, width, minR, maxR);
-            // double ci = mapToImaginary(y, height, minI, maxI);
             double cr = centerX + ((x - halfWidth) * scaleFactor);
             double ci = centerY + ((y - halfHeight) * scaleFactor);
             int n = isStable(cr, ci, iterations);
@@ -76,18 +73,6 @@ int MandelbrotWorker::isStable(double cr, double ci, int iterations)
         i++;
     }
     return i;
-}
-
-double MandelbrotWorker::mapToReal(double x, int width, double minR, double maxR)
-{
-    double range = maxR - minR;
-    return x * (range / width) + minR;
-}
-
-double MandelbrotWorker::mapToImaginary(double y, int height, double minI, double maxI)
-{
-    double range = maxI - minI;
-    return y * (range / height) + minI;
 }
 
 MandelbrotWidget::MandelbrotWidget(QWidget *parent)
@@ -145,7 +130,6 @@ void MandelbrotWidget::keyPressEvent(QKeyEvent *event)
 
 void MandelbrotWidget::zoom(double zoomFactor)
 {
-    printf("Zoom");
     curScale *= zoomFactor;
     update();
     workerThread.render(centerX, centerY, curScale, size().width(), size().height(), devicePixelRatio());

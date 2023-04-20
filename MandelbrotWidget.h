@@ -26,9 +26,7 @@ private:
     int height;
     double devicePixelRatio;
 
-    int isStable(double cr, double ci, int iterations);
-    static double mapToReal(double x, int width, double minR, double maxR);
-    static double mapToImaginary(double y, int height, double minI, double maxI);
+    static int isStable(double cr, double ci, int iterations);
 };
 
 class MandelbrotWidget : public QWidget
